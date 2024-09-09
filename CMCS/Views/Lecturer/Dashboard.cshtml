@@ -1,0 +1,26 @@
+﻿@model CMCS.Models.Lecturer
+
+<div class="dashboard">
+    <h2>Lecturer Dashboard</h2>
+    <p>Welcome, @Model.FirstName</p> 
+
+    <ul class="dashboard-options">
+        <li><a href="@Url.Action("SubmitClaim", "Lecturer")" class="btn btn-primary">Submit a Claim</a></li>
+        <li><a href="@Url.Action("TrackClaims", "Lecturer")" class="btn btn-secondary">Track Claims</a></li>
+    </ul>
+</div>
+
+<style>
+    .dashboard {
+        text-align: center;
+        padding: 50px;
+    }
+
+    .dashboard-options {
+        list-style-type: none;
+    }
+
+        .dashboard-options li {
+            margin: 10px 0;
+        }
+</style>

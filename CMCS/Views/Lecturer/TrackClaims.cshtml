@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CMCS.Models.Claim>
+
+@{
+    ViewData["Title"] = "Track Claims";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!Model.Any())
+{
+    <p>No claims found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Claim ID</th>
+                <th>Date Submitted</th>
+                <th>Status</th>
+                <th>Total Claim Amount</th>
+                <th>Supporting Documents</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@claim.ClaimID</td>
+                    <td>@claim.DateSubmitted.ToShortDateString()</td>
+                    <td>@claim.Status</td>
+                    <td>@claim.TotalClaimAmount.ToString("C")</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(claim.SupportingDocumentPath))
+                        {
+                            <a href="@claim.SupportingDocumentPath" target="_blank">View Document</a>
+                        }
+                        else
+                        {
+                            <span>No document</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

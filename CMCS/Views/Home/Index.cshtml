@@ -1,0 +1,55 @@
+﻿@* Views/Home/Index.cshtml *@
+@model CMCS.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="container">
+    <div class="hero-section text-center mt-5">
+        <h1>@Model.WelcomeMessage</h1>
+        <p class="lead">Easily manage, submit, and track claims with our simple and efficient system.</p>
+        <a href="@Url.Action("Login", "Lecturer")" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4 text-center">
+            <h3>Submit Claims</h3>
+            <p>Submit your monthly claims easily with our streamlined process.</p>
+            <i class="fas fa-paper-plane fa-3x"></i>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Track Progress</h3>
+            <p>Keep track of the status of your claims in real-time.</p>
+            <i class="fas fa-chart-line fa-3x"></i>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Fast Approvals</h3>
+            <p>Get your claims approved quickly and efficiently by coordinators.</p>
+            <i class="fas fa-check-circle fa-3x"></i>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background-color: #f8f9fa;
+        padding: 60px 0;
+        margin-bottom: 40px;
+        border-radius: 10px;
+    }
+    .hero-section h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    .hero-section p {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+    .row .col-md-4 {
+        margin-bottom: 20px;
+    }
+    .fas {
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+</style>

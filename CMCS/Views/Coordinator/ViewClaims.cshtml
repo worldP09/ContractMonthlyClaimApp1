@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CMCS.Models.Claim>
+
+<h2>Coordinator - View Claims</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Lecturer</th>
+            <th>Module</th>
+            <th>Hours Worked</th>
+            <th>Total Claim Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimID</td>
+                <td>@claim.Lecturer.FirstName @claim.Lecturer.LastName</td>
+                <td>@claim.Module</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.TotalClaimAmount</td>
+                <td>@claim.Status</td>
+                <td>
+                    @if (claim.Status == "Pending")
+                    {
+                        <form asp-action="ApproveClaim" method="post">
+                            <input type="hidden" name="claimId" value="@claim.ClaimID" />
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <form asp-action="RejectClaim" method="post">
+                            <input type="hidden" name="claimId" value="@claim.ClaimID" />
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
